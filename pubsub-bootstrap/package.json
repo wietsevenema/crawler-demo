@@ -1,0 +1,13 @@
+{
+  "name": "pubsub-bootstrap",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "bootstrap": "node bootstrap"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/pubsub": "^2.3.0"
+  }
+}

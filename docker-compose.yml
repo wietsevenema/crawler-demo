@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  api:
+    build: api
+    ports:
+    - "8080:80"
+    environment: 
+        PORT: 80
+        GOOGLE_PROJECT: local
+        FIRESTORE_EMULATOR_HOST: firestore:3000
+        PUBSUB_EMULATOR_HOST: pubsub:3000
+        PUBSUB_PROJECT_ID: local
+    depends_on: 
+        - firestore
+        - pubsub
+  firestore:
+    build: firestore
+    command: ["--host-port=0.0.0.0:3000"]
+  pubsub: 
+    build: pubsub
+    command: ["--host-port=0.0.0.0:3000", "--project=local"]
+  pubsub-bootstrap:
+    build: pubsub-bootstrap
+    environment: 
+        PUBSUB_EMULATOR_HOST: pubsub:3000
+        PUBSUB_PROJECT_ID: local
+    command: sh -c './wait-for pubsub:3000 -t 30 -- npm run bootstrap'
+    depends_on: 
+        - pubsub
