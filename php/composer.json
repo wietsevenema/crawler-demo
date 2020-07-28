@@ -1,0 +1,12 @@
+{
+    "name": "actuallymab/crawler-demo",
+    "authors": [
+        {
+            "name": "Aydin Bahadir",
+            "email": "mehmet.aydin.bahadir@gmail.com"
+        }
+    ],
+    "require": {
+        "google/cloud": "^0.136.0"
+    }
+}
